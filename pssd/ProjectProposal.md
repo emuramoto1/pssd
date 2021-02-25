@@ -1,3 +1,4 @@
+# Team Members: Emily Muramoto, Lina Li, James Lee
 # The Big Idea
 Our project is designed to help Babson College students track their progress towards a degree and identify possible concentration paths. Through this project, we wish to explore student education and come up with a product that can help minimize the stress that comes with choosing courses. The minimum viable product would be a website that would ask for the user’s transcript so that the website can identify what classes the user has already taken so far and what classes the user has to take in the future in order to graduate in a timely manner. The website would also give the user different concentration options and provide specific future courses that the user can take to fulfill those concentrations. A stretch goal would be to also take in the user’s grades for each of their courses and determine an optimal concentration for them.
 
