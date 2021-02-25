@@ -15,7 +15,9 @@ Our team goal is to learn how to effectively communicate and collaborate on a py
 
 
 We will need to create a file that has all of Babson’s graduation requirements in order to determine whether an individual is on track to graduate as well as the classes that they are still missing for their degree requirements. We will also need to compile Babson’s course listings into a CSV file in order to provide recommendations. Lastly, we will need to create a data frame that has various concentration requirements, to identify which ones the user is the closest to completing. 
-* Lastly, we will need to understand HTML to create a website that’s integrated with our python code, so users will be able to use it.
+
+
+Lastly, we will need to understand HTML to create a website that’s integrated with our python code, so users will be able to use it.
 
 
 # Project Schedule
@@ -24,12 +26,18 @@ Then, we will start to brainstorm on the website draft and try to determine the 
 
 # Collaboration Plan
 As of now, we plan to collaborate by splitting tasks, while maintaining the flexibility to chat via messenger and video call in case of coding hurdles or questions about our project. We think this particular organizational structure will be good as one member is in a different time-zone and finding a time to meet may be difficult with different class schedules and previous engagements.
+
+
 In terms of a software development methodology, we think that an agile development methodology is most appropriate. Given that this methodology focuses on creating mini-iterations, we will be able to improve efficiency and minimize risks early on in the project. 
 
 # Risks
 The biggest risk to the success of our project is effective and efficient collaboration. Our team consists of members from different time zones and it is all of our first time working on a coding project together from a virtual standpoint. 
+
+
 The second biggest risk is our understanding of Python. We are all beginners so there is much to learn to create this project. We are unsure if we will be able to learn everything we need to implement every feature that we desire in the given time frame — as it is relatively short.
 
 # Additional Course Content
 Some additional topics that may be useful to cover in class is how to import different libraries into VS code, as we have encountered issues before while trying to utilize libraries like Numpy.
+
+
 Another topic that would be interesting to learn would be how to import a pdf into Python and turn it into Python code, as we will need to analyze the user’s unofficial transcripts. 
