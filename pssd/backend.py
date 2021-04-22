@@ -1,5 +1,5 @@
 import xlrd
-
+import pprint
 
 def import_doc(data):
     """
@@ -80,8 +80,29 @@ def class_list():
         "OIM",
     ]
 
+def transfer_classes():
+    return [
+        'ECN 2000',
+        'RHT 1000',
+        'XXX 1200',
+        'HSS 2050',
+        'CVA 2050',
+        'HSS 2001', 
+        'CHN 1200',
+        'LVA 2050',
+        'FRN 1200',
+        'ITL 1200',
+        'JPN 1200',
+        'SPN 1200',
+        'QTM 1000' 
+        ]
+
+def micro():
+    return ['SME 2031']
+
 def is_course(value):
     """identifies whether or not the value is a course"""
+    value = str(value)
     lst = value.split()
     return lst[0] in class_list()
 
@@ -108,10 +129,29 @@ def course_info(row, sheet):
     d["credits"] = sheet.cell_value(row, 4)
     return d 
 
+def excel_scanner(sheet):
+    d = {}
+    count = 0
+    no_credit = ['W', 'NCP', 'F', 'NCF']
+    for i in range(sheet.nrows):
+        if sheet.cell_value(i, 2) not in no_credit:
+            if sheet.cell_value(i,1) != '':
+                if is_course(sheet.cell_value(i, 1)):
+                    d["class_" + str(count)] = course_info(i, sheet)
+                    count += 1
+    for i in d: 
+        if d[i]['course_code'] in transfer_classes():
+            d[i]['credits'] = 4.0
+        elif d[i]['course_code'] in micro():
+            d[i]['credits'] = 3.0
+    return d
 
-        
-
-
+def count_credits(sheet): 
+    d = excel_scanner(sheet)
+    count = 0 
+    for i in d:
+        count += d[i]['credits']
+    return count
 
 def main():
     data = "test.xlsx"
@@ -121,7 +161,9 @@ def main():
     # print(is_course('HSS'))
     # print(return_data(sheet)[0])
     # print(cell_course(sheet))
-    print(course_info(33, sheet))
+    pprint.pprint(excel_scanner(sheet))
+    # excel_scanner(sheet)
+    print(count_credits(sheet))
 
 
 if __name__ == "__main__":
