@@ -32,6 +32,10 @@ def print_data(sheet):
 def class_list():
     '''creates a list of the first 3 letters in a course code'''
     return [
+        "MIS",
+        "MFE",
+        "LIB",
+        "CGE",
         "ACC",
         "LAW",
         "SME",
@@ -129,6 +133,11 @@ def course_info(row, sheet):
     d["credits"] = sheet.cell_value(row, 4)
     return d 
 
+def study_abroad_course_info(row, sheet):
+    d = course_code_seperator(row, sheet)
+    d["credits"] = sheet.cell_value(row, 2)
+    return d 
+
 def excel_scanner(sheet):
     d = {}
     count = 0
@@ -137,14 +146,20 @@ def excel_scanner(sheet):
         if sheet.cell_value(i, 2) not in no_credit:
             if sheet.cell_value(i,1) != '':
                 if is_course(sheet.cell_value(i, 1)):
-                    d["class_" + str(count)] = course_info(i, sheet)
-                    count += 1
-    for i in d: 
-        if d[i]['course_code'] in transfer_classes():
-            d[i]['credits'] = 4.0
-        elif d[i]['course_code'] in micro():
-            d[i]['credits'] = 3.0
+                    if sheet.cell_value(i, 2) in [1, 2, 3, 4]:
+                        d["class_" + str(count)] = study_abroad_course_info(i, sheet)  
+                        count +=1
+                    else:
+                        d["class_" + str(count)] = course_info(i, sheet)
+                        count += 1
     return d
+
+    # for i in d: 
+    #     if d[i]['course_code'] in transfer_classes():
+    #         d[i]['credits'] = 4.0
+    #     elif d[i]['course_code'] in micro():
+    #         d[i]['credits'] = 3.0
+    # return d
 
 def count_credits(sheet): 
     d = excel_scanner(sheet)
@@ -154,9 +169,11 @@ def count_credits(sheet):
     return count
 
 def main():
-    data = "test.xlsx"
+    data = "test0.xlsx"
+    data1 = "test1.xlsx"
     # classes = "data/class.txt"
     sheet = import_doc(data)
+    sheet1 = import_doc(data1)
     # print_data(sheet)
     # print(is_course('HSS'))
     # print(return_data(sheet)[0])
@@ -164,6 +181,8 @@ def main():
     pprint.pprint(excel_scanner(sheet))
     # excel_scanner(sheet)
     print(count_credits(sheet))
+    pprint.pprint(excel_scanner(sheet1))
+    print(count_credits(sheet1))
 
 
 if __name__ == "__main__":
