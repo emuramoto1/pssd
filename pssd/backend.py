@@ -134,11 +134,13 @@ def course_info(row, sheet):
     return d 
 
 def study_abroad_course_info(row, sheet):
+    """outputs a dictionary with credit count, course code, and course title for a row of information for study abroad classes"""
     d = course_code_seperator(row, sheet)
     d["credits"] = sheet.cell_value(row, 2)
     return d 
 
 def excel_scanner(sheet):
+    """Scans an excel file and outputs a dictionary with a student's course information"""
     d = {}
     count = 0
     no_credit = ['W', 'NCP', 'F', 'NCF']
@@ -162,6 +164,7 @@ def excel_scanner(sheet):
     # return d
 
 def count_credits(sheet): 
+    """Counts the number of credits a student has"""
     d = excel_scanner(sheet)
     count = 0 
     for i in d:
