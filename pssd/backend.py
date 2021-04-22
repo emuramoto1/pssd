@@ -174,9 +174,11 @@ def count_credits(sheet):
 def main():
     data = "test0.xlsx"
     data1 = "test1.xlsx"
+    data_sara = "test_sara.xlsx"
     # classes = "data/class.txt"
     sheet = import_doc(data)
     sheet1 = import_doc(data1)
+    sheet_sara = import_doc(data_sara)
     # print_data(sheet)
     # print(is_course('HSS'))
     # print(return_data(sheet)[0])
@@ -186,6 +188,8 @@ def main():
     print(count_credits(sheet))
     pprint.pprint(excel_scanner(sheet1))
     print(count_credits(sheet1))
+    pprint.pprint(excel_scanner(sheet_sara))
+    print(count_credits(sheet_sara))
 
 
 if __name__ == "__main__":
