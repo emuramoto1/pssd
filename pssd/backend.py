@@ -203,31 +203,62 @@ def change_keys_discover(sheet):
     d = excel_scanner(sheet)
     new_d = {}
     for key in d:
-        for k, value in d[key].items():
-            if d[key]["course_code"] == "FME 1000":
-                new_d[key] = temp_dictionary("CE_FME", "RM_FME", 3)
-            elif d[key]["course_code"] == "FME 1001":
-                new_d[key] = temp_dictionary("CE_FME2", "RM_FME2", 4)
-            elif d[key]["course_code"] == "ACC 1000":
-                new_d[key] = temp_dictionary("CE_ACC", "RM_ACC", 4)
-            elif d[key]["course_code"] == "LAW 1000":
-                new_d[key] = temp_dictionary("CE_LAW", "RM_LAW", 4)
-            elif d[key]["course_code"] == "FYS 1000":
-                new_d[key] = temp_dictionary("CE_FYS", "RM_FYS", 1)
-            elif d[key]["course_code"] == "QTM 1000":
-                new_d[key] = temp_dictionary("CE_QTM1", "RM_QTM1", 4)
-            elif d[key]["course_code"] == "QTM 1010":
-                new_d[key] = temp_dictionary("CE_QTM2", "RM_QTM2", 4)
-            elif d[key]["course_code"] == "RHT 1000":
-                new_d[key] = temp_dictionary("CE_RHT1", "RM_RHT1", 4)
-            elif d[key]["course_code"] == "RHT 1001":
-                new_d[key] = temp_dictionary("CE_RHT2", "RM_RHT2", 4)
-            elif d[key]["course_code"] == "AHS 1000":
-                new_d[key] = temp_dictionary("CE_AHS", "RM_AHS", 4)
-            elif d[key]["course_code"][:-2] == "NST 10":
-                new_d[key] = temp_dictionary("CE_NST1", "RM_NST1", 4)
+        # for k in d[key].items():
+        if d[key]["course_code"] == "FME 1000":
+            new_d[key] = temp_dictionary("CE_FME", "RM_FME", 3)
+        elif d[key]["course_code"] == "FME 1001":
+            new_d[key] = temp_dictionary("CE_FME2", "RM_FME2", 4)
+        elif d[key]["course_code"] == "ACC 1000":
+            new_d[key] = temp_dictionary("CE_ACC", "RM_ACC", 4)
+        elif d[key]["course_code"] == "LAW 1000":
+            new_d[key] = temp_dictionary("CE_LAW", "RM_LAW", 4)
+        elif d[key]["course_code"] == "FYS 1000":
+            new_d[key] = temp_dictionary("CE_FYS", "RM_FYS", 1)
+        elif d[key]["course_code"] == "QTM 1000":
+            new_d[key] = temp_dictionary("CE_QTM1", "RM_QTM1", 4)
+        elif d[key]["course_code"] == "QTM 1010":
+            new_d[key] = temp_dictionary("CE_QTM2", "RM_QTM2", 4)
+        elif d[key]["course_code"] == "RHT 1000":
+            new_d[key] = temp_dictionary("CE_RHT1", "RM_RHT1", 4)
+        elif d[key]["course_code"] == "RHT 1001":
+            new_d[key] = temp_dictionary("CE_RHT2", "RM_RHT2", 4)
+        elif d[key]["course_code"] == "AHS 1000":
+            new_d[key] = temp_dictionary("CE_AHS", "RM_AHS", 4)
+        elif d[key]["course_code"][:-2] == "NST 10":
+            new_d[key] = temp_dictionary("CE_NST1", "RM_NST1", 4)
     a = {"CE_DiscoverTotal":count_credits_ce(new_d)}
     new_d["discover_total"] = a
+    return new_d
+
+def change_keys_explore(sheet):
+    d = excel_scanner(sheet)
+    new_d = {}
+    for key in d:
+        for i in d[key].items():
+            if d[key]["course_code"] == "SME 2001":
+                new_d[key] = temp_dictionary("CE_SME2001", "RM_SME2001", 3)
+            elif d[key]["course_code"] == "SME 2002":
+                new_d[key] = temp_dictionary("CE_SME2002", "RM_SME2002", 3)
+            elif d[key]["course_code"] == "SME 2011":
+                new_d[key] = temp_dictionary("CE_SME2011", "RM_SME2011", 3)
+            elif d[key]["course_code"] == "SME 2012":
+                new_d[key] = temp_dictionary("CE_SME2012", "RM_SME2012", 3)
+            elif d[key]["course_code"] == "SME 2021":
+                new_d[key] = temp_dictionary("CE_SME2021", "RM_SME2021", 3)
+            elif d[key]["course_code"] == "SME 2031":
+                new_d[key] = temp_dictionary("CE_SME2031", "RM_SME2031", 3)
+            elif d[key]["course_code"] == "ECN 2000":
+                new_d[key] = temp_dictionary("CE_ECN2000", "RM_ECN2000", 4)
+            elif d[key]["course_code"][:6] == "HSS 20":
+                new_d[key] = temp_dictionary("CE_HSS", "RM_HSS", 4)
+            elif d[key]["course_code"][:6] == "LVA 20":
+                new_d[key] = temp_dictionary("CE_LVA", "RM_LVA", 4)
+            elif d[key]["course_code"][:6] == "CVA 20":
+                new_d[key] = temp_dictionary("CE_CVA", "RM_CVA", 4)
+    #         elif d[key]["course_code"][:-2] == "NST 10":
+    #             new_d[key] = temp_dictionary("CE_NST1", "RM_NST1", 4)
+    a = {"CE_ExploreTotal":count_credits_ce(new_d)}
+    new_d["explore_total"] = a
     return new_d
 
 ANNOT_KEY = '/Annots'
@@ -279,7 +310,8 @@ def main():
     # print(count_credits(sheet1))
     # pprint.pprint(excel_scanner(sheet_sara))
     # print(count_credits(sheet_sara))
-    data_dict = change_keys_discover(sheet)
+    data_dict = change_keys_discover(sheet) | change_keys_explore(sheet)
+    print(data_dict)
     fill_pdf(input_pdf_path, output_pdf_path, data_dict)
 
 if __name__ == "__main__":
