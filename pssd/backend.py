@@ -283,6 +283,7 @@ def change_keys_discovertotal(sheet):
     d["discover_total"] = nest_d
     return d
 
+
 ### EXPLORE
 
 
@@ -461,7 +462,7 @@ def dict_after_ALA(sheet):
 
 def change_keys_AE(sheet):
     # AE stands for Advanced Elective
-    d = dict_after_46XX(sheet)
+    d = dict_after_ALA(sheet)
     new_d = {}
     count = 0
     for key in d:
@@ -576,7 +577,7 @@ def dict_for_all_total(sheet):
         change_keys_ILA4(sheet),
         change_keys_qtmnst(sheet),
     ]
-    for i in d: 
+    for i in d:
         if i is not None:
             new_d = new_d | i
     return new_d
@@ -631,50 +632,34 @@ def fill_pdf(input_pdf_path, output_pdf_path, data_dict):
 
 
 def main():
-    data = "test0.xlsx"
+    data = "test1.xlsx"
     sheet = import_doc(data)
-    data1 = "test1.xlsx"
-    sheet1 = import_doc(data1)
-    data_sara = "test_sara.xlsx"
-    sheet_sara = import_doc(data_sara)
     input_pdf_path0 = "template.pdf"
     output_pdf_path0 = "output_template.pdf"
-    # print_data(sheet)
-    # print(is_course('HSS'))
-    # print(return_data(sheet)[0])
-    # print(cell_course(sheet))
-    # pprint.pprint(excel_scanner(sheet))
-    # excel_scanner(sheet)
-    # print(count_credits(sheet))
-    # pprint.pprint(excel_scanner(sheet1))
-    # print(count_credits(sheet1))
-    # pprint.pprint(excel_scanner(sheet_sara))
-    # print(count_credits(sheet_sara))
-    data_dict = (
-        dict_discover(sheet1)
-        | dict_explore(sheet1)
-        | change_keys_asm(sheet1)
-        | change_keys_46XX(sheet1)
-        | change_keys_ALA(sheet1)
-    )
 
-    pprint.pprint(dict_for_all_total(sheet1))
+    data_dict = (
+        dict_discover(sheet)
+        | dict_explore(sheet)
+        | change_keys_asm(sheet)
+        | change_keys_46XX(sheet)
+        | change_keys_ALA(sheet)
+    )
 
     fill_pdf(input_pdf_path0, output_pdf_path0, data_dict)
     input_pdf_path1 = "output_template.pdf"
     output_pdf_path1 = "output_template1.pdf"
 
-    data_dict1 = change_keys_AE(sheet1)
+    data_dict1 = change_keys_AE(sheet)
     fill_pdf(input_pdf_path1, output_pdf_path1, data_dict1)
     input_pdf_path2 = "output_template1.pdf"
     output_pdf_path2 = "output_template2.pdf"
 
-    data_dict2 = change_keys_FE(sheet1) | change_keys_focustotal(sheet1)
+    data_dict2 = change_keys_FE(sheet) | change_keys_focustotal(sheet)
     fill_pdf(input_pdf_path2, output_pdf_path2, data_dict2)
     input_pdf_path2 = "output_template2.pdf"
     output_pdf_path2 = "output_template3.pdf"
 
-    data_dict2 = change_keys_extra(sheet1) | change_keys_all_total(sheet1)
+    data_dict2 = change_keys_extra(sheet) | change_keys_all_total(sheet)
     fill_pdf(input_pdf_path2, output_pdf_path2, data_dict2)
 
 
