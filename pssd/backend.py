@@ -2,6 +2,7 @@ import xlrd
 import pprint
 import pdfrw
 
+#!/usr/bin/env python
 # Class Variables
 
 
