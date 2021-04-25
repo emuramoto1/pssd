@@ -195,6 +195,7 @@ def excel_scanner(sheet):
 
 
 def temp_dictionary_ce_rm(ce, rm, ce_value):
+    """creates dict for course credits and the checkmark"""
     d = {}
     d[ce] = ce_value
     d[rm] = True
@@ -202,6 +203,7 @@ def temp_dictionary_ce_rm(ce, rm, ce_value):
 
 
 def count_credits_ce(d):
+    """counts the number of credits in a dictionary with 'ce'"""
     count = 0
     for i in d:
         for key in d[i]:
@@ -225,6 +227,7 @@ def clear_used_entries(original, used):
 
 
 def temp_dictionary_ce_rm_cc_ct(ce, rm, cc, ct, ce_value, cc_value, ct_value):
+    """creates a dict for ce, rm, cc, and ct"""
     d = {}
     d[ce] = ce_value
     d[rm] = True
@@ -237,6 +240,7 @@ def temp_dictionary_ce_rm_cc_ct(ce, rm, cc, ct, ce_value, cc_value, ct_value):
 
 
 def dict_discover(sheet):
+    """creates the dictionary for discover section"""
     d = excel_scanner(sheet)
     new_d = {}
     for key in d:
@@ -266,6 +270,7 @@ def dict_discover(sheet):
 
 
 def dict_after_discover(sheet):
+    """remaining classes after removing the discover section"""
     original = excel_scanner(sheet)
     used = dict_discover(sheet)
     d = clear_used_entries(original, used)
@@ -273,6 +278,7 @@ def dict_after_discover(sheet):
 
 
 def change_keys_discovertotal(sheet):
+    """create dict for credits in discover"""
     d = dict_discover(sheet)
     nest_d = {}
     count = 0
@@ -289,6 +295,7 @@ def change_keys_discovertotal(sheet):
 
 
 def change_keys_explore(sheet):
+    """create dict for the explore section"""
     d = dict_after_discover(sheet)
     new_d = {}
     count_cva = 0
@@ -325,6 +332,7 @@ def change_keys_explore(sheet):
 
 
 def dict_before_ILA4(sheet):
+    """removes the used classes"""
     original = dict_after_discover(sheet)
     used = change_keys_explore(sheet)
     d = clear_used_entries(original, used)
@@ -332,6 +340,7 @@ def dict_before_ILA4(sheet):
 
 
 def change_keys_ILA4(sheet):
+    """creates a dict for hss/css/lva section of pdf"""
     d = dict_before_ILA4(sheet)
     new_d = {}
     ILA4 = ["HSS", "CVA", "LVA"]
@@ -348,6 +357,7 @@ def change_keys_ILA4(sheet):
 
 
 def dict_after_ILA4(sheet):
+    """removes lva/cva/hss class"""
     original = dict_before_ILA4(sheet)
     used = change_keys_ILA4(sheet)
     d = clear_used_entries(original, used)
@@ -355,6 +365,7 @@ def dict_after_ILA4(sheet):
 
 
 def change_keys_qtmnst(sheet):
+    """creates dict for qtm3/nst2"""
     d = dict_after_ILA4(sheet)
     new_d = {}
     count = 0
@@ -369,6 +380,7 @@ def change_keys_qtmnst(sheet):
 
 
 def dict_after_qtmnst(sheet):
+    """removes the qtm3/nst2 class from the main dict"""
     original = dict_after_ILA4(sheet)
     used = change_keys_qtmnst(sheet)
     d = clear_used_entries(original, used)
@@ -376,6 +388,7 @@ def dict_after_qtmnst(sheet):
 
 
 def change_keys_exploretotal(sheet):
+    """creates dictionary for explore total credits"""
     d = change_keys_qtmnst(sheet) | change_keys_ILA4(sheet) | change_keys_explore(sheet)
     nest_d = {}
     count = 0
@@ -389,6 +402,7 @@ def change_keys_exploretotal(sheet):
 
 
 def dict_explore(sheet):
+    """combines and creates the dictionary for the explore section"""
     d = (
         change_keys_qtmnst(sheet)
         | change_keys_ILA4(sheet)
@@ -402,6 +416,7 @@ def dict_explore(sheet):
 
 
 def change_keys_asm(sheet):
+    """creates dictionary for asm"""
     d = dict_after_qtmnst(sheet)
     new_d = {}
     for key in d:
@@ -411,6 +426,7 @@ def change_keys_asm(sheet):
 
 
 def dict_after_asm(sheet):
+    """removes asm from main dict"""
     original = dict_after_qtmnst(sheet)
     used = change_keys_asm(sheet)
     d = clear_used_entries(original, used)
@@ -418,6 +434,7 @@ def dict_after_asm(sheet):
 
 
 def change_keys_46XX(sheet):
+    """creates dictionary for 46XX class"""
     d = dict_after_asm(sheet)
     new_d = {}
     for key in d:
@@ -427,6 +444,7 @@ def change_keys_46XX(sheet):
 
 
 def dict_after_46XX(sheet):
+    """removes 46XX from main dict"""
     original = dict_after_asm(sheet)
     used = change_keys_46XX(sheet)
     d = clear_used_entries(original, used)
@@ -434,7 +452,7 @@ def dict_after_46XX(sheet):
 
 
 def change_keys_ALA(sheet):
-    """"""
+    """creates dict for advanced liberal arts"""
     # ALAE = Advanced Liberal Art
     d = dict_after_46XX(sheet)
     new_d = {}
@@ -455,6 +473,7 @@ def change_keys_ALA(sheet):
 
 
 def dict_after_ALA(sheet):
+    """removes advanced liberal arts from main dict"""
     original = dict_after_46XX(sheet)
     used = change_keys_ALA(sheet)
     d = clear_used_entries(original, used)
@@ -462,6 +481,7 @@ def dict_after_ALA(sheet):
 
 
 def change_keys_AE(sheet):
+    """creates dict for advanced electives"""
     # AE stands for Advanced Elective
     d = dict_after_ALA(sheet)
     new_d = {}
@@ -482,6 +502,7 @@ def change_keys_AE(sheet):
 
 
 def dict_after_AE(sheet):
+    """removes advanced electives from main dict"""
     original = dict_after_ALA(sheet)
     used = change_keys_AE(sheet)
     d = clear_used_entries(original, used)
@@ -489,6 +510,7 @@ def dict_after_AE(sheet):
 
 
 def change_keys_FE(sheet):
+    """creates dict for free electives"""
     # FE stands for Free Elective
     d = dict_after_AE(sheet)
     new_d = {}
@@ -509,6 +531,7 @@ def change_keys_FE(sheet):
 
 
 def dict_after_FE(sheet):
+    """removes free electives from main dict"""
     original = dict_after_AE(sheet)
     used = change_keys_FE(sheet)
     d = clear_used_entries(original, used)
@@ -516,6 +539,7 @@ def dict_after_FE(sheet):
 
 
 def change_keys_focustotal(sheet):
+    """creates dict for total credits in focus section"""
     d = (
         change_keys_asm(sheet)
         | change_keys_46XX(sheet)
@@ -538,6 +562,7 @@ def change_keys_focustotal(sheet):
 
 
 def change_keys_extra(sheet):
+    """creates dict for extra courses"""
     d = dict_after_FE(sheet)
     new_d = {}
     count = 0
@@ -557,6 +582,7 @@ def change_keys_extra(sheet):
 
 
 def dict_after_extra(sheet):
+    """removes extra courses from main dict"""
     original = dict_after_FE(sheet)
     used = change_keys_extra(sheet)
     d = clear_used_entries(original, used)
@@ -564,6 +590,7 @@ def dict_after_extra(sheet):
 
 
 def dict_for_all_total(sheet):
+    """combines all the dicts needed to calculate total credits"""
     new_d = {}
     d = [
         change_keys_46XX(sheet),
@@ -585,6 +612,7 @@ def dict_for_all_total(sheet):
 
 
 def change_keys_all_total(sheet):
+    """sums the credits for all classes and creates a dict with that value"""
     d = dict_for_all_total(sheet)
     nest_d = {}
     count = 0
@@ -609,6 +637,7 @@ WIDGET_SUBTYPE_KEY = "/Widget"
 
 
 def fill_pdf(input_pdf_path, output_pdf_path, data_dict):
+    """reads and writes into the pdf template"""
     template_pdf = pdfrw.PdfReader(input_pdf_path)
     for page in template_pdf.pages:
         if page[ANNOT_KEY] != None:
@@ -633,7 +662,7 @@ def fill_pdf(input_pdf_path, output_pdf_path, data_dict):
 
 
 def main():
-    data = "test1.xlsx"
+    data = "test0.xlsx"
     sheet = import_doc(data)
     input_pdf_path0 = "template.pdf"
     output_pdf_path0 = "output_template.pdf"
