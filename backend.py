@@ -660,6 +660,7 @@ def fill_pdf(input_pdf_path, output_pdf_path, data_dict):
                                     annotation.update(pdfrw.PdfDict(AP=""))
     pdfrw.PdfWriter().write(output_pdf_path, template_pdf)
 
+
 def write(sheet):
     """This function writes the classes to the pdf"""
     data = sheet
@@ -691,9 +692,10 @@ def write(sheet):
 
     data_dict2 = change_keys_extra(sheet) | change_keys_all_total(sheet)
     return fill_pdf(input_pdf_path2, output_pdf_path2, data_dict2)
-    
+
+
 def main():
-    data = "test1.xlsx"
+    # data = "test1.xlsx"
     # sheet = import_doc(data)
     # input_pdf_path0 = "template.pdf"
     # output_pdf_path0 = "output_template.pdf"
@@ -722,7 +724,7 @@ def main():
 
     # data_dict2 = change_keys_extra(sheet) | change_keys_all_total(sheet)
     # fill_pdf(input_pdf_path2, output_pdf_path2, data_dict2)
-    write(data)
+    # write(data)
 
 
 if __name__ == "__main__":
