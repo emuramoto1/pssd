@@ -660,9 +660,9 @@ def fill_pdf(input_pdf_path, output_pdf_path, data_dict):
                                     annotation.update(pdfrw.PdfDict(AP=""))
     pdfrw.PdfWriter().write(output_pdf_path, template_pdf)
 
-
-def main():
-    data = "test0.xlsx"
+def write(sheet):
+    """This function writes the classes to the pdf"""
+    data = sheet
     sheet = import_doc(data)
     input_pdf_path0 = "template.pdf"
     output_pdf_path0 = "output_template.pdf"
@@ -690,7 +690,39 @@ def main():
     output_pdf_path2 = "output_template3.pdf"
 
     data_dict2 = change_keys_extra(sheet) | change_keys_all_total(sheet)
-    fill_pdf(input_pdf_path2, output_pdf_path2, data_dict2)
+    return fill_pdf(input_pdf_path2, output_pdf_path2, data_dict2)
+    
+def main():
+    data = "test1.xlsx"
+    # sheet = import_doc(data)
+    # input_pdf_path0 = "template.pdf"
+    # output_pdf_path0 = "output_template.pdf"
+
+    # data_dict = (
+    #     dict_discover(sheet)
+    #     | dict_explore(sheet)
+    #     | change_keys_asm(sheet)
+    #     | change_keys_46XX(sheet)
+    #     | change_keys_ALA(sheet)
+    # )
+
+    # fill_pdf(input_pdf_path0, output_pdf_path0, data_dict)
+    # input_pdf_path1 = "output_template.pdf"
+    # output_pdf_path1 = "output_template1.pdf"
+
+    # data_dict1 = change_keys_AE(sheet)
+    # fill_pdf(input_pdf_path1, output_pdf_path1, data_dict1)
+    # input_pdf_path2 = "output_template1.pdf"
+    # output_pdf_path2 = "output_template2.pdf"
+
+    # data_dict2 = change_keys_FE(sheet) | change_keys_focustotal(sheet)
+    # fill_pdf(input_pdf_path2, output_pdf_path2, data_dict2)
+    # input_pdf_path2 = "output_template2.pdf"
+    # output_pdf_path2 = "output_template3.pdf"
+
+    # data_dict2 = change_keys_extra(sheet) | change_keys_all_total(sheet)
+    # fill_pdf(input_pdf_path2, output_pdf_path2, data_dict2)
+    write(data)
 
 
 if __name__ == "__main__":
