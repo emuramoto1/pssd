@@ -1,4 +1,6 @@
-Goal 
+Goal
+# Resources and Information for MIS3640 - Problem Solving and Software Design
+### Class Information:
 
 The goal of this project is to create a more seamless experience for Babson students to track their courses and credits. The end output is a filled out "Babson Degree Worksheet" based off of the user's past courses.
 
