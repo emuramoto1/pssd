@@ -1,4 +1,6 @@
 import pdfrw
+
+#This finds the values needed for the pdf"""
 pdf_template = 'template.pdf'
 
 template_pdf = pdfrw.PdfReader(pdf_template)

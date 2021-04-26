@@ -688,14 +688,14 @@ def write(sheet):
     data_dict2 = change_keys_FE(sheet) | change_keys_focustotal(sheet)
     fill_pdf(input_pdf_path2, output_pdf_path2, data_dict2)
     input_pdf_path2 = "output_template2.pdf"
-    output_pdf_path2 = "output_template3.pdf"
+    output_pdf_path2 = "static\output_template3.pdf"
 
     data_dict2 = change_keys_extra(sheet) | change_keys_all_total(sheet)
     return fill_pdf(input_pdf_path2, output_pdf_path2, data_dict2)
 
 
 def main():
-    # data = "test1.xlsx"
+    data = "test1.xlsx"
     # sheet = import_doc(data)
     # input_pdf_path0 = "template.pdf"
     # output_pdf_path0 = "output_template.pdf"
@@ -724,7 +724,8 @@ def main():
 
     # data_dict2 = change_keys_extra(sheet) | change_keys_all_total(sheet)
     # fill_pdf(input_pdf_path2, output_pdf_path2, data_dict2)
-    # write(data)
+    write(data)
+    pass
 
 
 if __name__ == "__main__":
