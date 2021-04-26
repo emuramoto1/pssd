@@ -723,7 +723,7 @@ def main():
 
     # data_dict2 = change_keys_extra(sheet) | change_keys_all_total(sheet)
     # fill_pdf(input_pdf_path2, output_pdf_path2, data_dict2)
-    # write(data)
+    write(data)
 
 if __name__ == "__main__":
     main()
