@@ -9,7 +9,7 @@ First, a Babson student needs to his or her their Academic Record from Workday i
 
 ### How to Run Code on Python:
 
-First, a Babson student needs to obtain his or her Academic Record from Workday in an .xlsx format. He or she can obtain this information from Academics >> Academic Record >> View My Academic Record >> and then click the little “X” with a spreadsheet icon in the top right corner. They can then drop the file into the main directory and run the function write(<FILE_NAME>) in backend.py to automatically fill out the Babson Degree Worksheet. The final outputted worksheet will be named "output_template3.pdf" and will be in the “/static/” folder. 
+First, a Babson student needs to obtain his or her Academic Record from Workday in an .xlsx format. He or she can obtain this information from Academics >> Academic Record >> View My Academic Record >> and then click the little “X” with a spreadsheet icon in the top right corner. They can then drop the file into the main directory and set the "data" variable in the function "main()" equal to the file name. Finally, they can run backend.py to automatically fill out the Babson Degree Worksheet. The final outputted worksheet will be named "output_template3.pdf" and will be in the “/static/” folder. 
 
 For testing purposes, an Academic Record of a current Babson Student has been provided labeled as “test1.xlsx”. Users can run the code using this excel file if they do not have access to their own.
 
