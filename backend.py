@@ -693,7 +693,7 @@ def write(sheet):
     data_dict2 = change_keys_extra(sheet) | change_keys_all_total(sheet)
     return fill_pdf(input_pdf_path2, output_pdf_path2, data_dict2)
 
-def main():
+def main(): 
     data = "test1.xlsx"
     # sheet = import_doc(data)
     # input_pdf_path0 = "template.pdf"
