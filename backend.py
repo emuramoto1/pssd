@@ -116,6 +116,11 @@ def print_data(sheet):
             # sheet.cell_value(i, 5),
         )
 
+def merge(dict1, dict2):
+    d = {}
+    d.update(dict1)
+    d.update(dict2)
+    return d
 
 def count_credits(sheet):
     """Counts the number of credits a student has"""
@@ -724,6 +729,9 @@ def main():
     # data_dict2 = change_keys_extra(sheet) | change_keys_all_total(sheet)
     # fill_pdf(input_pdf_path2, output_pdf_path2, data_dict2)
     write(data)
+    dict1 = {"key":"value"}
+    dict2 = {}
+    print(merge(dict1, dict2))
 
 if __name__ == "__main__":
     main()
