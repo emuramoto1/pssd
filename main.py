@@ -40,6 +40,10 @@ def howto():
 
 @app.route("/registration.html", methods = ["GET", "POST"])
 def registration():
+   """
+   modified from 
+   https://blog.miguelgrinberg.com/post/handling-file-uploads-with-flask#:~:text=The%20actual%20file%20data%20can,then%20the%20file%20is%20discarded.
+   """
    if request.method == 'POST':
        if 'file' not in request.files:
            print('No file attached in request')
@@ -55,17 +59,6 @@ def registration():
            return render_template('output.html')
    return render_template('registration.html')
 
-# @app.route('/uploads/<filename>')
-# def uploaded_file(filename):
-#    return render_template('output.html')
-
-# @app.route('/output.html', methods = ['GET', 'POST'])
-# def uploaded_file():
-#     if request.method == 'POST':
-#         f = request.files['file']
-#         f.save(secure_filename(f.filename))
-#         return write(f)
-    
 
 if __name__ == '__main__':
     app.run(debug=True)
