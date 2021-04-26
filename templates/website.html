@@ -41,17 +41,19 @@
         /* it to every page. Then you can add your own styles internally */
         .topnav 
                 {
-                background-color:white; /* can change this to suit your needs */
+                background-color:#006644; /* can change this to suit your needs */
                 overflow: hidden;
+                padding-left:5%;
                 }
   
                 /* Style the links inside the navigation bar */
                 .topnav a 
                     {
+                    width: 5%;
                     height: 100px;
                     font-family: tradegothic;   
                     float: left;
-                    display: block;
+                    display: flex;
                     color: #dedfd7; /* this is the font color when you hover over the menu item */
                     text-align: center;
                     padding: 50px 106.5px;
@@ -85,7 +87,7 @@
 
 
                 /* When the screen is less than 1000 pixels wide, hide all links, except for the first one ("Home"). Show the link that contains should open and close the topnav (.icon) */
-                @media screen and (max-width: 1000px) 
+                @media screen and (max-width: 100%) 
                     {
                     .topnav a:not(:first-child) {display: none;}
                     .topnav a.icon {
@@ -95,7 +97,7 @@
                     }
   
             /* The "responsive" class is added to the topnav with JavaScript when the user clicks on the icon. This class makes the topnav look good on small screens (display the links vertically instead of horizontally) */
-            @media screen and (max-width: 1000px) 
+            @media screen and (max-width: 100%) 
             {
                 .topnav.responsive {position: relative;}
                 .topnav.responsive a.icon {
@@ -157,7 +159,6 @@
 
 <div class="footer">
   <h6 class="logo"> <img src="https://i.ytimg.com/vi/IPG7XSK_DuQ/maxresdefault.jpg" alt="Image of Babson College logo" height="300px" width="500px"></h6>
-  
 </div>
 
 </body> 
