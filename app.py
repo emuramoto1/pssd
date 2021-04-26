@@ -17,7 +17,7 @@ def allowed_file(filename):
            filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
 
-@app.route("/")
+@app.route("/website.html")
 def index():
     return render_template("website.html")
 
