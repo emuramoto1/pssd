@@ -63,6 +63,7 @@ def class_list():
 
 
 def transfer_classes():
+    """list of classes for transfer students"""
     return [
         "ECN 2000",
         "RHT 1000",
@@ -81,6 +82,7 @@ def transfer_classes():
 
 
 def micro():
+    """micro econmics coures code"""
     return ["SME 2031"]
 
 
@@ -117,6 +119,7 @@ def print_data(sheet):
         )
 
 def merge(dict1, dict2):
+    """merge two dictionaries together"""
     d = {}
     d.update(dict1)
     d.update(dict2)
