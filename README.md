@@ -18,6 +18,6 @@ First, run the main.py file, which return a clickable link in the terminal. Then
 
 ### Required Dependencies:
 * python -m pip install pdfrw
-* python -m pip install xlrd == 1.2.0
+* python -m pip install xlrd==1.2.0
 * python -m pip install flask 
 
