@@ -1,5 +1,4 @@
 import xlrd
-import pprint
 import pdfrw
 
 #!/usr/bin/env python
@@ -645,7 +644,11 @@ WIDGET_SUBTYPE_KEY = "/Widget"
 
 
 def fill_pdf(input_pdf_path, output_pdf_path, data_dict):
-    """reads and writes into the pdf template"""
+    """
+    reads and writes into the pdf template
+    
+    modified from "https://akdux.com/python/2020/10/31/python-fill-pdf-files.html"
+    """
     template_pdf = pdfrw.PdfReader(input_pdf_path)
     for page in template_pdf.pages:
         if page[ANNOT_KEY] != None:
