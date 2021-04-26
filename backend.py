@@ -738,9 +738,6 @@ def main():
     # data_dict2 = change_keys_extra(sheet) | change_keys_all_total(sheet)
     # fill_pdf(input_pdf_path2, output_pdf_path2, data_dict2)
     write(data)
-    dict1 = {"key": "value"}
-    dict2 = {}
-    print(merge(dict1, dict2))
 
 
 if __name__ == "__main__":
