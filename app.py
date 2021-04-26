@@ -1,5 +1,5 @@
-from Flask import Flask, render_template, request, redirect
-from backend import fill_pdf
+from flask import Flask, request, render_template
+from backend import write
 
 app = Flask(__name__)
 
@@ -14,8 +14,7 @@ def open():
         return render_template("registration.html", error=None)
 
     else:    
-        return render_template("registration.html", error=True)
-    return render_template("registration.html", error=None)
+        return render_template("registration.html", error=None)
 
 if __name__ == '__main__':
     app.run
