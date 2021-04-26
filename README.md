@@ -23,3 +23,5 @@ First, run the main.py file, which returns a clickable link in the terminal. The
 
 ### Credit:
 For the Babson image across all pages except the about.html page, we served this from babson.edu and the link is embedded in our HTML code. For the Babson logo in the footer of all pages, we served this from ytimg.com and the link is embedded in our HTML code. For the images on the howto.html page, these are screenshots taken from Babson Workday.
+
+The navigation bar was created using class materials from Babson Professor Shankar's Webtech course.
