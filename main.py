@@ -16,13 +16,13 @@ def allowed_file(filename):
     return '.' in filename and \
            filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
-@app.route("/website.html")
+@app.route("/index.html")
 def website():
-    return render_template("website.html")
+    return render_template("index.html")
 
 @app.route("/website.html")
 def index():
-    return render_template("website.html")
+    return render_template("index.html")
 
 @app.route("/about.html")
 def about():
