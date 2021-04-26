@@ -1,7 +1,7 @@
 import xlrd
 import pdfrw
 
-#!/usr/bin/env python
+
 # Class Variables
 
 
@@ -117,12 +117,14 @@ def print_data(sheet):
             # sheet.cell_value(i, 5),
         )
 
+
 def merge(dict1, dict2):
     """merge two dictionaries together"""
     d = {}
     d.update(dict1)
     d.update(dict2)
     return d
+
 
 def count_credits(sheet):
     """Counts the number of credits a student has"""
@@ -646,7 +648,7 @@ WIDGET_SUBTYPE_KEY = "/Widget"
 def fill_pdf(input_pdf_path, output_pdf_path, data_dict):
     """
     reads and writes into the pdf template
-    
+
     modified from "https://akdux.com/python/2020/10/31/python-fill-pdf-files.html"
     """
     template_pdf = pdfrw.PdfReader(input_pdf_path)
@@ -704,7 +706,8 @@ def write(sheet):
     data_dict2 = change_keys_extra(sheet) | change_keys_all_total(sheet)
     return fill_pdf(input_pdf_path2, output_pdf_path2, data_dict2)
 
-def main(): 
+
+def main():
     data = "test1.xlsx"
     # sheet = import_doc(data)
     # input_pdf_path0 = "template.pdf"
@@ -735,9 +738,10 @@ def main():
     # data_dict2 = change_keys_extra(sheet) | change_keys_all_total(sheet)
     # fill_pdf(input_pdf_path2, output_pdf_path2, data_dict2)
     write(data)
-    dict1 = {"key":"value"}
+    dict1 = {"key": "value"}
     dict2 = {}
     print(merge(dict1, dict2))
+
 
 if __name__ == "__main__":
     main()
