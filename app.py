@@ -20,7 +20,7 @@ def allowed_file(filename):
 def website():
     return render_template("index.html")
 
-@app.route("/")
+@app.route("/website.html")
 def index():
     return render_template("index.html")
 
